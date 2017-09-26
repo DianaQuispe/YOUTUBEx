@@ -15,7 +15,7 @@ let app = {
       $('#span').click(function() {
             app.youtubeSearch($('#input').val());
       })
-      $('#span').keypress(function(e) {
+      $('#input').keypress(function(e) {
             if(e.which == 13)  {
                   app.youtubeSearch($('#input').val());
                   
