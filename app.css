@@ -1,0 +1,16 @@
+* {
+  outline: 2px solid red;
+  background-color: #3A3A3A;
+  color: white;
+}
+ol {
+  list-style: none;
+}
+.fa-search {
+  background-color: inherit !important ;
+  color:black !important ;
+}
+.input-group {
+  margin: 0 5%;
+  
+}
