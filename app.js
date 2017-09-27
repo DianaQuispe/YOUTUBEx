@@ -30,7 +30,7 @@ class Youtube {
             }
             
       })
-     
+     youtube.clickImages();
    }
    clickImages(){
          $('ol').click((e) =>
@@ -52,7 +52,7 @@ class Youtube {
          `);
          return `<li> 
                         <h4 ><b >${video.snippet.title}</b></h4>
-                     <img class="media-object" src=${imageUrl} />
+                     <img id=${video.id.videoId} class="media-object" src=${imageUrl} />
                       <label>${video.snippet.description}</label>
                      
                </li>`;
