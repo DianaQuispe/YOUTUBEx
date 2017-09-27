@@ -2,43 +2,46 @@
 
 const API_KEY = "AIzaSyB6RQPxv-X6aojxx9IKh0Nc4twyqlMnitI";
 
-let app = {
-   result: {
+class Youtube {
+ constructor()
+  {
+   this.result= {
       videos: [],
       selectedVideo: null,
       searchTerm: "iPhone X"
-   },
+     }
+   }
 
-   init: function() {
+   init() {
       //app.videoSearch("iPhone");
       console.log($('#input').val())
       $('#span').click(function() {
          $("#root").empty();
          $("#video").empty();
          
-            app.youtubeSearch($('#input').val());
+            youtube.youtubeSearch($('#input').val());
       })
       $('#input').keypress(function(e) {
             if(e.which == 13)  {
                   $("#root").empty();
                   $("#video").empty();
-                  app.youtubeSearch($('#input').val());
+                  this.youtubeSearch($('#input').val());
                   
             }
             
       })
-      app.clickImages()
-   },
-   clickImages: function(){
+     
+   }
+   clickImages(){
          $('ol').click((e) =>
           {  $("#video").empty();
           $("#root").empty();
             this.youtubeSearch(e.target.id);
          } )
 
-   },
+   }
    //<iframe className="embed-responsive-item" src={url}> </iframe>
-   getVideoList: function(videos) {
+   getVideoList(videos) {
       return videos.map((video, index) => {
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;            
          const imageUrl = video.snippet.thumbnails.medium.url;
@@ -56,38 +59,38 @@ let app = {
 
       });
       
-   },
-   youtubeSearch: function(searchTerm) {
+   }
+   youtubeSearch(searchTerm) {
       console.log('sdfdsf:' +searchTerm);
 
       YTSearch({ key: API_KEY, term: searchTerm }, data => {
          console.log("result", data);
-         app.result = {
+         this.result = {
             videos: data,
             selectedVideo: data[0],
             searchTerm: searchTerm
          };
-         var list = app.getVideoList(app.result.videos);
+         var list = this.getVideoList(this.result.videos);
          console.log("lis: ", list);
 
          $("#root").append(list);
       //    $('#video').append(list[0]);
          
       });
-   },
-   videoSearch: function(searchTerm) {
+   }
+   videoSearch(searchTerm) {
       jQuery.getJSON("list.json", data => {
          console.log("result", data.items);
-         app.result = {
+         this.result = {
             videos: data.items,
             selectedVideo: data.items[0],
             searchTerm: searchTerm
          };
-         var list = app.getVideoList(app.result.videos);
+         var list = this.getVideoList(this.result.videos);
          console.log("lis: ", list);
          $("#root").append(list);
       });
    }
 };
-
-$(document).ready(app.init);
+let  youtube = new Youtube();
+$(document).ready(youtube.init);
