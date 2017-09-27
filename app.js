@@ -13,18 +13,17 @@ class Youtube {
    }
 
    init() {
+      youtube.youtubeSearch($('#input').val('laboratoria'));
+      
       //app.videoSearch("iPhone");
-      console.log($('#input').val())
+      // console.log($('#input').val('laboratoria'))
       $('#span').click(function() {
-         $("#root").empty();
-         $("#video").empty();
-         
+         $("#root").empty();         
             youtube.youtubeSearch($('#input').val());
       })
       $('#input').keypress(function(e) {
             if(e.which == 13)  {
                   $("#root").empty();
-                  $("#video").empty();
                   youtube.youtubeSearch($('#input').val());
                   
             }
