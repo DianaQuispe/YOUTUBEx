@@ -25,7 +25,7 @@ class Youtube {
             if(e.which == 13)  {
                   $("#root").empty();
                   $("#video").empty();
-                  this.youtubeSearch($('#input').val());
+                  youtube.youtubeSearch($('#input').val());
                   
             }
             
@@ -36,7 +36,7 @@ class Youtube {
          $('ol').click((e) =>
           {  $("#video").empty();
           $("#root").empty();
-            this.youtubeSearch(e.target.id);
+          youtube.youtubeSearch(e.target.id);
          } )
 
    }
@@ -46,7 +46,7 @@ class Youtube {
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;            
          const imageUrl = video.snippet.thumbnails.medium.url;
       //    $('#video').append(`https://www.youtube.com/embed/${video.id.videoId}`)
-         $('#video').append(`<div  class="embed-responsive embed-responsive-16by9" ><p> 
+         $('#video').append(`<div  ><p> 
          <iframe class="embed-responsive-item" src=${url}> </iframe></p></div>
      
          `);
